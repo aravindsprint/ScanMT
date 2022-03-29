@@ -1,0 +1,98 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <div style="margin-top: 10px;float: left; text-align: center;">
+    <ion-title>
+
+  Commercial Name
+</ion-title>
+</div>
+    <div style="float: right;  padding: 1px;">
+    <ion-button (click)='myRefreshButton()' color="dark"  size='small' fill='clear'>
+<ion-icon name="reload-circle"></ion-icon>
+</ion-button>
+</div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+
+  </ion-header>
+  <ion-item>
+  <div class="sticky">
+  <ion-searchbar placeholder="Search the Commercial Name" [(ngModel)]="filterTerm" animated="true" ></ion-searchbar>
+  
+  </div>
+  </ion-item>
+
+   <div class="spin" *ngIf="isShown">
+    <ion-spinner color="primary" ></ion-spinner>
+    </div>
+
+  <ion-list>
+   <ion-item *ngFor="let item of items  | filter:filterTerm" href="/color/{{item.commercial_name}}">
+     
+    <section style="float:left; width:70%;">
+  <!-- <a routerLink="/color/{{item.commercial_name}}"></a> -->
+   {{ item.commercial_name }} 
+   
+   
+   </section>
+   <section style="width:30%;">
+   <section style="font-size:8px">{{ item.stock_uom }}</section>&nbsp;<section style="float:right;">{{item.actualqty}}</section>
+  </section>
+  
+    
+ </ion-item>
+ </ion-list>
+
+   <!-- <div>
+        <input type="text" [(ngModel)]="term">
+        <div *ngFor = "let item of items |filter:term" >
+          <p>
+            {{item.commercial_name}}
+          </p>
+        </div>
+ 
+    </div>  --> 
+  
+     
+
+<!--   <ion-item *ngFor="let x of items " >
+  <a routerLink="/color/{{x.commercial_name}}">
+     {{x.commercial_name}}
+  </a>
+  </ion-item> -->
+  
+  
+<!--    <ion-list>
+   <ion-grid >
+   <ion-row *ngFor="let item of items  | filter:filterTerm">
+    <a routerLink="/color/{{item.commercial_name}}">
+     
+      
+      <ion-col size="9" ><ion-label class="ion-text-wrap" href="/color/{{item.commercial_name}}">{{ item.commercial_name }}</ion-label></ion-col>
+      <ion-col size="3" ><div style="font-size:5px">{{ item.stock_uom }}</div>&nbsp;<div class="ion-float-right">{{item.actualqty}}</div>
+      </ion-col> 
+        
+
+    </a>
+    </ion-row>
+    
+    </ion-grid>
+    </ion-list> -->
+     
+
+
+
+ 
+</ion-content>

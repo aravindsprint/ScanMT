@@ -1,0 +1,60 @@
+<ion-card-content>  
+  <div>
+    <ion-row>
+      <ion-col size="12">
+        Item Code : {{item_code}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        Source Warehouse : {{s_warehouse}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        Target Warehouse : {{t_warehouse}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        Batch No : {{batch}}
+      </ion-col>
+    </ion-row>
+   
+    <ion-row>
+      <ion-col size="12">
+        Actual Qty : {{actualqty}}&nbsp;{{stock_uom}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+       <ion-label>Transfer Qty :</ion-label>
+        <ion-input [(ngModel)]="qty" (keyup)="onChange($event.target.value)" value="{{qty }}"></ion-input>&nbsp;
+      </ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col size="12">
+        Batch Status : {{batch_status}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+     <ion-label>Change Batch Status</ion-label>
+      <ion-select (ionChange)="onSelectChange($event.target.value)"> 
+          <ion-select-option *ngFor="let batchStatus of BatchStatuses" value="{{ batchStatus }}" >
+            {{ batchStatus }}
+          </ion-select-option>
+     </ion-select>
+  </ion-col>
+</ion-row>
+</div>
+</ion-card-content>
+
+
+
+<ion-row>
+   
+    <ion-col size="12">
+    <ion-button color="primary" expand="full" (click)="update()">Update</ion-button>
+    </ion-col>
+</ion-row> 

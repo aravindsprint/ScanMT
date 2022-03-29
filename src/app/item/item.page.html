@@ -1,0 +1,108 @@
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Item Name</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+
+<ion-row>
+<ion-col size="3">
+<div style="float: left;   padding: 1px;">
+<ion-button (click)='myBackButton()' color="dark"  size='small' >
+<ion-icon name='arrow-undo'></ion-icon>Back
+</ion-button>
+</div>
+</ion-col>
+<ion-col size="6">
+<div style="margin-top: 10px;text-align: center;  padding: 1px; font-size:18px">
+  Selected Details
+</div>
+</ion-col>
+<ion-col size="3">
+<div style="float: right;  padding: 1px;">
+<ion-button (click)='myRefreshButton()' color="dark"  size='small' >
+<ion-icon name="reload-circle"></ion-icon>Refresh
+</ion-button>
+</div>
+</ion-col>
+</ion-row>
+
+  
+
+  <ion-row>
+  <ion-col>
+  <ion-item>
+  <b>Commercial Name:</b>&nbsp;{{comm_name}}<br>
+  </ion-item>
+  </ion-col>
+  </ion-row>
+
+  <ion-row>
+  <ion-col>
+  <ion-item>
+  <b>Color Name: </b>&nbsp;{{color_name}}<br>
+  </ion-item> 
+  </ion-col>
+  </ion-row>
+
+  <ion-row>
+  <ion-col>
+  <ion-item>
+  <!-- <ion-searchbar placeholder="Search the Item code"  (ionChange)="getItems($event)"></ion-searchbar> -->
+  <div class="sticky">
+  <ion-searchbar placeholder="Search the ItemName" [(ngModel)]="filterTerm" animated="true" ></ion-searchbar>
+  </div>
+
+  </ion-item> 
+  </ion-col>
+  </ion-row>
+
+   <div class="spin" *ngIf="isShown">
+    <ion-spinner color="primary" ></ion-spinner>
+    </div>
+  
+  <ion-list>
+  <!-- <ion-item *ngFor="let item of items  | filter:filterTerm">
+  <a [routerLink]="['/stock',item.item_code,color_name,comm_name]">
+     {{item.item_code}}<br>
+   {{item.actualqty}}&nbsp;{{item.stock_uom}}
+  </a>
+  </ion-item> -->
+
+ <ion-item *ngFor="let item of items | filter:filterTerm" 
+  href="/stockdetails" (click)="setItemDetail(item)">
+
+
+     
+    <section style="float:left; width:70%;">
+  <!-- <a routerLink="/color/{{item.commercial_name}}"></a> -->
+  {{item.item_code}}
+   
+   </section>
+   <section style="width:30%;">
+   <section style="font-size:8px">{{ item.stock_uom }}</section>&nbsp;<section style="float:right;">{{item.actualqty}}</section>
+  </section>
+  
+    
+ </ion-item>
+  	
+  <!-- <ion-item *ngFor="let x of jbody1">
+  <a [routerLink]="['/stock',x.item_code,color_name,comm_name]">
+     {{x.item_code}}
+  </a>
+  </ion-item> -->
+  </ion-list>
+
+</ion-content>
