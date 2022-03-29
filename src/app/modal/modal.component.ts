@@ -75,6 +75,8 @@ export class ModalComponent implements OnInit {
   localStorage.setItem('BATCHSTATUS',value);
   }
    
+ 
+
 
   update(){
      var updatefavStock = this.storage.get(STORAGE_KEY);
@@ -118,9 +120,13 @@ export class ModalComponent implements OnInit {
          console.log("result[i].qty",result[i].qty);
          this.storage.set(STORAGE_KEY, result);
          this.updateBatchStatus(batch, change_batch_status);
-         this.modalCtrl.dismiss();
+         console.log("before modal close");
+         this.modalCtrl.dismiss({
+         'dismissed': true
+         });
+         console.log("after modal close");
          //window.location.reload();   
-         return result;
+         //return result;
 
          }
          
@@ -172,5 +178,9 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
    this.getItemDetail();
   }
+
+  //ionViewWillEnter() {
+    //this.getItemDetail();
+  //}
 
 }

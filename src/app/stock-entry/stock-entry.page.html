@@ -25,17 +25,17 @@
  
     <ion-row>
     <ion-col><br>
-    <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)" #radioGroup>
+    <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)"  #radioGroup>
       <section style="font-size:7px">
         <ion-label>Naming Series</ion-label>
       </section>
       
 
       <ion-item *ngFor="let item of radio_list" (ionFocus)="radioFocus()" (ionSelect)="radioSelect($event)"
-        (ionBlur)="radioBlur()">
+        (ionBlur)="radioBlur()" >
         <ion-label>{{item.text}}</ion-label>
         <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" 
-          color="{{item.color}}" disabled="{{item.disabled}}"></ion-radio>
+          color="{{item.color}}" disabled="{{item.disabled}}" ></ion-radio>
       </ion-item>
 
     </ion-radio-group>

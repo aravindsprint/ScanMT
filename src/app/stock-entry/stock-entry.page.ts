@@ -27,6 +27,7 @@ export class StockEntryPage implements OnInit {
    jbody1;
    jbodylen;
    series;
+   checkSeries;
    
    
    total_a;
@@ -52,7 +53,7 @@ export class StockEntryPage implements OnInit {
       value: 'BM/21/',
       text: 'BM/21/',
       disabled: false,
-      //checked: true,
+      checked: true,
       color: 'primary'
     }, {
       id: '2',
@@ -60,7 +61,7 @@ export class StockEntryPage implements OnInit {
       value: 'MT/21/',
       text: 'MT/21/',
       disabled: false,
-      //checked: false,
+      checked: false,
       color: 'secondary'
     }
   ];
@@ -158,6 +159,12 @@ export class StockEntryPage implements OnInit {
   }
 
   draft(){
+
+   this.checkSeries = localStorage.getItem('SERIES');
+   if(this.checkSeries == null){
+    console.log("null");
+    this.showSelectSeries();
+   }else{
    this.favoriteService.getAllFavoriteStock().then(result => {
      
    var current_timestamp = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -240,6 +247,7 @@ export class StockEntryPage implements OnInit {
        var id = jsonSuccess.data.name;
        this.showDraftDocNo(id);
        this.favoriteService.removeAllFavoriteStocks();
+       localStorage.removeItem('SERIES');
        }
        else{
         console.log("inside err jbody",this.jbody1);
@@ -252,6 +260,13 @@ export class StockEntryPage implements OnInit {
       
    })
 
+   }
+   
+
+  }
+
+  showSelectSeries() {
+    this.alertService.presentToast("Select Naming series");
   }
 
   showDraftDocNo(id) {
@@ -263,7 +278,13 @@ export class StockEntryPage implements OnInit {
   }
   
   submit(){
-  this.favoriteService.getAllFavoriteStocks().then(result => {
+
+  this.checkSeries = localStorage.getItem('SERIES');
+   if(this.checkSeries == null){
+    console.log("null");
+    this.showSelectSeries();
+   }else{
+   this.favoriteService.getAllFavoriteStocks().then(result => {
      
    var current_timestamp = moment().format("YYYY-MM-DD HH:mm:ss");
    console.log("current_timestamp",current_timestamp);
@@ -344,6 +365,7 @@ export class StockEntryPage implements OnInit {
        var id = jsonSuccess.data.name;
        this.showSubmitDocNo(id);
        this.favoriteService.removeAllFavoriteStocks();
+       localStorage.removeItem('SERIES');
        }
        else{
         console.log("inside err jbody",this.jbody1);
@@ -356,8 +378,7 @@ export class StockEntryPage implements OnInit {
       
    })
 
-
-   
+   }   
   }
 
   clearStockEntry() {
@@ -365,6 +386,7 @@ export class StockEntryPage implements OnInit {
     //this.stockEntry = [];
     this.favoriteService.removeAllFavoriteStocks();
     this.favoriteService.getAllFavoriteStock();
+    localStorage.removeItem('SERIES');
   }
 
   
