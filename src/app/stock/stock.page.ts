@@ -26,6 +26,8 @@ import { ModalComponent } from "../modal/modal.component";
 
 import { IonicSelectableComponent } from "ionic-selectable";
 
+import { EditStockPage } from '../edit-stock/edit-stock.page';
+
 //const WAREHOUSES = 'warehouseNames';
 
 //@Injectable()
@@ -119,14 +121,27 @@ export class StockPage implements OnInit {
   filterTerm1: string;
   filterTerm2: string;
 
-  async openModal() {
-    const modal = await this.modalCtrl.create({
-      component: ModalComponent,
-      componentProps: { propsType: "modal" },
-      cssClass: "modal",
-    });
-    return await modal.present();
-  }
+
+async openModal(jbody,index) {
+ const modal = await this.modalCtrl.create({
+ component: EditStockPage,
+ componentProps: { jbody: jbody }
+ });
+ modal.onDidDismiss().then(data=>{
+    //this.playersList[index]=data.data
+    console.log("data",data)
+  })
+ return await modal.present();
+}
+
+  //async openModal() {
+    //const modal = await this.modalCtrl.create({
+      //component: ModalComponent,
+      //componentProps: { propsType: "modal" },
+      //cssClass: "modal",
+    //});
+    //return await modal.present();
+  //}
 
   getTotal(jbody1) {
     this.jbody01 = jbody1;
@@ -448,7 +463,7 @@ export class StockPage implements OnInit {
             this.jbody.change_batch_status = jbody.batch_status;
             this.jbody.qty = jbody.actualqty;
             });
-            this.openModal();
+            //this.openModal();
 
         }else{
         for (let i = 0; i < this.favstocks.length; i++) {
@@ -477,7 +492,7 @@ export class StockPage implements OnInit {
                 this.jbody.change_batch_status = jbody.batch_status;
                 this.jbody.qty = jbody.actualqty;
                 });
-                this.openModal();
+                //this.openModal();
                 } 
               }
             }
@@ -489,7 +504,7 @@ export class StockPage implements OnInit {
             this.jbody.change_batch_status = jbody.batch_status;
             this.jbody.qty = jbody.actualqty;
             });
-            this.openModal();
+            //this.openModal();
 
             }
           }
@@ -505,7 +520,7 @@ export class StockPage implements OnInit {
           this.jbody.change_batch_status = jbody.batch_status;
           this.jbody.qty = jbody.actualqty;
           });
-          this.openModal();
+          //this.openModal();
         }
       });
     }
@@ -544,7 +559,7 @@ export class StockPage implements OnInit {
          console.log("null 1");
             //this.setBatchDetail(jbody);
             this.favoriteService.favoriteStock(jbody);
-            this.openModal();
+            //this.openModal();
 
         }else{
           //console.log("this.favstocksLength != 0");
@@ -597,7 +612,7 @@ export class StockPage implements OnInit {
       this.stockpresent = stockPresent;
       if(this.stockpresent === undefined || this.stockpresent == "NO"){
           this.favoriteService.favoriteStock(jbody);
-          this.openModal();
+          //this.openModal();
       }else{
        return;
       }
@@ -607,7 +622,7 @@ export class StockPage implements OnInit {
   }
 
 
-  favoriteStockss(jbody) {
+  favoriteStockss(jbody, i) {
     this.setBatchDetail(jbody);
     //console.log("favoriteStockjbody", jbody);
     //console.log("favoriteStockjbody", jbody.isfavorites);
@@ -627,7 +642,7 @@ export class StockPage implements OnInit {
       if(this.favstocks == null){
         console.log("yes undefined");
         this.favoriteService.favoriteStock(jbody);
-        this.openModal();
+        this.openModal(jbody, i);
       }else{
        this.favstocksLength = this.favstocks.length;
        return this.favstocksLength;
@@ -640,7 +655,7 @@ export class StockPage implements OnInit {
          console.log("null 1");
             //this.setBatchDetail(jbody);
             this.favoriteService.favoriteStock(jbody);
-            this.openModal();
+            this.openModal(jbody, i);
 
         }else{
           //console.log("this.favstocksLength != 0");
@@ -697,7 +712,7 @@ export class StockPage implements OnInit {
       this.stockpresent = stockPresent;
       if(this.stockpresent === undefined || this.stockpresent == "NO"){
           this.favoriteService.favoriteStock(jbody);
-          this.openModal();
+          this.openModal(jbody, i);
       }else{
        return;
       }

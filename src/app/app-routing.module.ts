@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'stock-entry',
     loadChildren: () => import('./stock-entry/stock-entry.module').then( m => m.StockEntryPageModule)
+  },  {
+    path: 'edit-stock',
+    loadChildren: () => import('./edit-stock/edit-stock.module').then( m => m.EditStockPageModule)
   }
+
   
 ];
 

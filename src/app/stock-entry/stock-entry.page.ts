@@ -149,9 +149,9 @@ export class StockEntryPage implements OnInit {
   }
 
   unfavoriteStock(jbody) {
-    //console.log("unfavoriteStockjbody", jbody);
+    console.log("unfavoriteStockjbody 1", jbody);
     //console.log("unfavoriteStockjbody", jbody.isfavorites);
-    this.favoriteService.unfavoriteStock(jbody).then(() => {
+    this.favoriteService.removeStock(jbody).then(() => {
       //this.isFavorite = false;
       //this.jbody.isfavorites = false;
       this.getFavoriteStock();

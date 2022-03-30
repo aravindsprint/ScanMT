@@ -33,7 +33,7 @@ import { AutoCompleteModule } from 'ionic4-auto-complete';
 //import { NgSelectModule } from '@ng-select/ng-select';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { CommonModule } from '@angular/common';
-
+import {EditStockPageModule} from 'src/app/edit-stock/edit-stock.module';
 
 
 @NgModule({
@@ -54,6 +54,7 @@ import { CommonModule } from '@angular/common';
     //Device,
     BarcodeScanner,
     FavoriteService,
+    EditStockPageModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NativeStorage],
   bootstrap: [AppComponent],

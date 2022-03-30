@@ -96,9 +96,32 @@ export class FavoriteService {
     //})
   }
 
+  removeStock(stockId) {
+    console.log("unfavoriteStockjbody 2", stockId);
+    return this.getAllFavoriteStock().then((result) => {
+      if (result) {
+        console.log("unfav result",result);
+        this.result = result;
+
+        const idToRemove = stockId.idx;
+        console.log("idToRemove",idToRemove);
+        this.result = this.result.filter((item) => item.idx !== idToRemove);
+        console.log("filteredResult",this.result);
+
+        //var index = this.result.indexOf(stockId);
+        //console.log("index",index);
+        //this.result.splice(index, 1);
+        //var finalfavStock = this.storage.get(STORAGE_KEY);
+        //console.log("finalunfavStock", finalfavStock);
+        return this.storage.set(STORAGE_KEY, this.result);
+      }
+    });
+  }
+
   unfavoriteStock(stockId) {
     stockId.isfavorites = false;
-    console.log(" inside unfavoriteStock stockId", stockId);
+    console.log("unfavoriteStockjbody 2", stockId);
+    //console.log(" inside unfavoriteStock stockId", stockId);
     return this.getAllFavoriteStock().then((result) => {
       if (result) {
         console.log("unfav result",result);

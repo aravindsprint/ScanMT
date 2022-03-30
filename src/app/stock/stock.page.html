@@ -99,7 +99,7 @@
        <ion-button icon-only fill="clear" (click)="unfavoriteStock(x)" *ngIf="x.isfavorites===true" >
        
         <ion-icon name="add-circle"></ion-icon></ion-button>
-      <ion-button icon-only fill="clear" (click)="favoriteStockss(x)" *ngIf="x.isfavorites===false">
+      <ion-button icon-only fill="clear" (click)="favoriteStockss(x,i)" *ngIf="x.isfavorites===false">
        
         <ion-icon name="add-circle-outline"></ion-icon></ion-button>   
         
