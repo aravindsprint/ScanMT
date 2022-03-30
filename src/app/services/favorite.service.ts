@@ -146,7 +146,15 @@ export class FavoriteService {
 
 
   removeAllFavoriteStocks() {
-    //this.storage.remove(STORAGE_KEY);
-    this.result = [];
+    return this.getAllFavoriteStock().then((result) => {
+      if (result) {
+        console.log("unfav result",result);
+        this.result = result;
+        this.result.splice(0, this.result.length);
+        var finalfavStock = this.storage.get(STORAGE_KEY);
+        console.log("finalunfavStock", finalfavStock);
+        return this.storage.set(STORAGE_KEY, this.result);
+      }
+    });
   }
 }

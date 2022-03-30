@@ -383,10 +383,12 @@ export class StockEntryPage implements OnInit {
 
   clearStockEntry() {
     console.log("clearStockEntry");
-    //this.stockEntry = [];
-    this.favoriteService.removeAllFavoriteStocks();
-    this.favoriteService.getAllFavoriteStock();
+    this.stockEntry = [];
     localStorage.removeItem('SERIES');
+
+    this.favoriteService.removeAllFavoriteStocks().then(() => {
+      this.getFavoriteStock();
+    });
   }
 
   
