@@ -659,6 +659,10 @@ export class StockPage implements OnInit {
 
           if(this.batchfilteredClasses.length > 0){
           this.stockIdWarehouse = localStorage.getItem("SOURCEWAREHOUSE");
+          console.log("this.stockIdWarehouse",this.stockIdWarehouse);
+          console.log(" before this.warehouseArray",this.warehouseArray);
+          this.warehouseArray = [];
+          console.log(" after this.warehouseArray",this.warehouseArray);
           this.warehouseArray.push(this.stockIdWarehouse);
 
           let wclassKeys = this.warehouseArray;
