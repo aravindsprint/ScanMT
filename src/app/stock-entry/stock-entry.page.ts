@@ -40,7 +40,7 @@ export class StockEntryPage implements OnInit {
    response;
 
 
-   defaultSelectedRadio = "BM/21/";
+   defaultSelectedRadio = "BM/22/";
   //Get value on ionChange on IonRadioGroup
   selectedRadioGroup:any;
   //Get value on ionSelect on IonRadio item
@@ -50,16 +50,16 @@ export class StockEntryPage implements OnInit {
     {
       id: '1',
       name: 'radio_list',
-      value: 'BM/21/',
-      text: 'BM/21/',
+      value: 'BM/22/',
+      text: 'BM/22/',
       disabled: false,
       checked: true,
       color: 'primary'
     }, {
       id: '2',
       name: 'radio_list',
-      value: 'MT/21/',
-      text: 'MT/21/',
+      value: 'MT/22/',
+      text: 'MT/22/',
       disabled: false,
       checked: false,
       color: 'secondary'
