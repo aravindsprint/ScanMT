@@ -32,6 +32,7 @@
     "@ionic/storage": "^2.3.1",
     "@ng-select/ng-select": "^8.1.1",
     "angular-ng-autocomplete": "^2.0.5",
+    "capacitor-resources": "^2.0.5",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-network-information": "^2.0.2",
     "cordova-plugin-networkinterface": "^2.0.0",

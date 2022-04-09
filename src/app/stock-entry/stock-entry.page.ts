@@ -246,8 +246,8 @@ export class StockEntryPage implements OnInit {
        console.log("",jsonSuccess.data.name);
        var id = jsonSuccess.data.name;
        this.showDraftDocNo(id);
-       this.favoriteService.removeAllFavoriteStocks();
-       localStorage.removeItem('SERIES');
+       this.clearStockEntry();
+       //localStorage.removeItem('SERIES');
        }
        else{
         console.log("inside err jbody",this.jbody1);
@@ -364,8 +364,8 @@ export class StockEntryPage implements OnInit {
        console.log("",jsonSuccess.data.name);
        var id = jsonSuccess.data.name;
        this.showSubmitDocNo(id);
-       this.favoriteService.removeAllFavoriteStocks();
-       localStorage.removeItem('SERIES');
+       this.clearStockEntry();
+       //localStorage.removeItem('SERIES');
        }
        else{
         console.log("inside err jbody",this.jbody1);

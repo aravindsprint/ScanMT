@@ -11,8 +11,5 @@
     }
   },
   "cordova": {},
-   "server": {
-    "url": "http://202.21.41.138:8200",
-    "cleartext": true
-  }
+   
 }
