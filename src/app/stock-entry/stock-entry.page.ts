@@ -28,6 +28,10 @@ export class StockEntryPage implements OnInit {
    jbodylen;
    series;
    checkSeries;
+   noOfQty;
+   vehicleNo;
+   remark;
+   valueofgoods;
    
    
    total_a;
@@ -83,6 +87,23 @@ export class StockEntryPage implements OnInit {
     console.log("radioBlur");
   }
 
+  onChange(value) {  
+  console.log(value);
+  localStorage.setItem('NOOFQTY',value);
+  }
+  onChangeVehicle(value) {  
+  console.log(value);
+  localStorage.setItem('VEHICLENO',value);
+  }
+  onChangeRemark(value) {  
+  console.log(value);
+  localStorage.setItem('REMARK',value);
+  }
+  onChangeValueOfGoods(value) {  
+  console.log(value);
+  localStorage.setItem('VALUEOFGOODS',value);
+  }
+
 
 
    getFavoriteStock(){
@@ -126,6 +147,14 @@ export class StockEntryPage implements OnInit {
       
    })
    
+  }
+
+  CountableUOM = ['Rolls', 'Boxes', 'Bales', 'Bags',
+  'Nos'];
+
+  onSelectChange(value) {  
+  console.log(value);
+  localStorage.setItem('COUNTABLEUOM',value);
   }
 
 
@@ -172,6 +201,11 @@ export class StockEntryPage implements OnInit {
    var postDate = moment().format("YYYY-MM-DD");
    var postTime = moment().format("HH:mm:ss");
    var series = localStorage.getItem('SERIES');
+   var no_of_qty = localStorage.getItem('NOOFQTY');
+   var uom = localStorage.getItem('COUNTABLEUOM');
+   var vehicleno = localStorage.getItem('VEHICLENO');
+   var remark = localStorage.getItem('REMARK');
+   var valueofgoods = localStorage.getItem('VALUEOFGOODS');
 
     this.data = {
                 'name': '',
@@ -202,9 +236,9 @@ export class StockEntryPage implements OnInit {
                 'from_warehouse': '',
                 'to_warehouse': '',
                 'quantity': 0,
-                'no_of_countable_units': 0,
-                'countable_uom': 'Rolls',
-                'value_of_goods': '0',
+                'no_of_countable_units': no_of_qty,
+                'countable_uom': uom,
+                'value_of_goods': valueofgoods,
                 'total_incoming_value': 0,
                 'total_outgoing_value': 0,
                 'value_difference': 0,
@@ -217,7 +251,8 @@ export class StockEntryPage implements OnInit {
                 'per_transferred': '',
                 'total_amount': 0,
                 'purpose_of_transport': '',
-                'vehicle_number': 'None',
+                'vehicle_number': vehicleno,
+                'remarks': remark,
                 'no_of_rolls': 0,
                 'lot_received_date': '',
                 'knitting_unit': '',
@@ -291,6 +326,12 @@ export class StockEntryPage implements OnInit {
    var postDate = moment().format("YYYY-MM-DD");
    var postTime = moment().format("HH:mm:ss");
    var series = localStorage.getItem('SERIES');
+   var no_of_qty = localStorage.getItem('NOOFQTY');
+   var uom = localStorage.getItem('COUNTABLEUOM');
+   var vehicleno = localStorage.getItem('VEHICLENO');
+   var remark = localStorage.getItem('REMARK');
+   var valueofgoods = localStorage.getItem('VALUEOFGOODS');
+
     this.data = {
                 'name': '',
                 'owner': '',
@@ -320,9 +361,9 @@ export class StockEntryPage implements OnInit {
                 'from_warehouse': '',
                 'to_warehouse': '',
                 'quantity': 0,
-                'no_of_countable_units': 0,
-                'countable_uom': 'Rolls',
-                'value_of_goods': '0',
+                'no_of_countable_units': no_of_qty,
+                'countable_uom': uom,
+                'value_of_goods': valueofgoods,
                 'total_incoming_value': 0,
                 'total_outgoing_value': 0,
                 'value_difference': 0,
@@ -335,7 +376,8 @@ export class StockEntryPage implements OnInit {
                 'per_transferred': '',
                 'total_amount': 0,
                 'purpose_of_transport': '',
-                'vehicle_number': 'None',
+                'vehicle_number': vehicleno,
+                'remarks': remark,
                 'no_of_rolls': 0,
                 'lot_received_date': '',
                 'knitting_unit': '',
@@ -385,6 +427,11 @@ export class StockEntryPage implements OnInit {
     console.log("clearStockEntry");
     this.stockEntry = [];
     localStorage.removeItem('SERIES');
+    localStorage.removeItem('NOOFQTY');
+    localStorage.removeItem('COUNTABLEUOM');
+    localStorage.removeItem('VEHICLENO');
+    localStorage.removeItem('REMARK');
+    localStorage.removeItem('VALUEOFGOODS');
 
     this.favoriteService.removeAllFavoriteStocks().then(() => {
       this.getFavoriteStock();
