@@ -32,6 +32,7 @@ export class StockEntryPage implements OnInit {
    vehicleNo;
    remark;
    valueofgoods;
+   uom;
    
    
    total_a;
@@ -432,6 +433,11 @@ export class StockEntryPage implements OnInit {
     localStorage.removeItem('VEHICLENO');
     localStorage.removeItem('REMARK');
     localStorage.removeItem('VALUEOFGOODS');
+    this.noOfQty = '';
+    this.uom = '';
+    this.vehicleNo = '';
+    this.remark= '';
+    this.valueofgoods = '';
 
     this.favoriteService.removeAllFavoriteStocks().then(() => {
       this.getFavoriteStock();
