@@ -35,6 +35,7 @@ export class AuthService {
       {email: email, password: password}
     ).pipe(
       tap(token => {
+        console.log("token",token);
         this.storage.setItem('token', token)
         .then(
           () => {
@@ -44,6 +45,7 @@ export class AuthService {
         );
         this.token = token;
         this.isLoggedIn = true;
+        localStorage.setItem('isLoggedIn','true');
         return token;
       }),
     );
@@ -54,6 +56,7 @@ export class AuthService {
       {email: email, password: password}
     ).pipe(
       tap(token => {
+        console.log("token",token);
         this.storage.setItem('token', token)
         .then(
           () => {
@@ -63,6 +66,7 @@ export class AuthService {
         );
         this.token = token;
         this.isLoggedIn = true;
+        localStorage.setItem('isLoggedIn','true');
         return token;
       }),
     );
@@ -99,6 +103,7 @@ export class AuthService {
       tap(data => {
         this.storage.remove("token");
         this.isLoggedIn = false;
+        localStorage.setItem('isLoggedIn','false');
         delete this.token;
         return data;
       })
@@ -111,6 +116,7 @@ export class AuthService {
       tap(data => {
         this.storage.remove("token");
         this.isLoggedIn = false;
+        localStorage.setItem('isLoggedIn','false');
         delete this.token;
         return data;
       })

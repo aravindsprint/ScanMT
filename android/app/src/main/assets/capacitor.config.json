@@ -1,14 +1,19 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "Stock",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
-  "webDir": "www",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
-  "cordova": {}
+	"appId": "io.ionic.starter",
+	"appName": "Stock",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"linuxAndroidStudioPath": "/snap/android-studio/current/android-studio/bin/studio.sh",
+	"webDir": "www",
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 0
+		}
+	},
+	"cordova": {},
+	"server": {
+		"url": "http://172.16.18.39:8200",
+		"cleartext": true,
+		"originalUrl": "http://172.16.18.39:8200"
+	}
 }

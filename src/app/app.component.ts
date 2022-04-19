@@ -6,6 +6,8 @@ import { AuthService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+
 
 
 @Component({
@@ -32,6 +34,7 @@ export class AppComponent {
     private authService: AuthService,
     private storage: NativeStorage,
     private navCtrl: NavController,
+    private router: Router,
     private alertService: AlertService,    
   ) {
     this.initializeApp();
@@ -44,6 +47,19 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+
+      var isLogged = localStorage.getItem('isLoggedIn');
+      console.log("isLogged",isLogged);
+
+      if(isLogged == 'true') {
+      this.router.navigate(['/stockdetails']).then(() => {
+       //window.location.reload();
+      });
+      }else{
+      this.router.navigate(['']).then(() => {
+       //window.location.reload();
+       });
+      }
       this.statusBar.styleDefault();
       // Commenting splashScreen Hide, so it won't hide splashScreen before auth check
       this.splashScreen.hide();
