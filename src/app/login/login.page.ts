@@ -56,6 +56,7 @@ export class LoginPage implements OnInit {
        console.log("jbody",this.jbody.message);
        this.username = this.jbody.full_name;
        console.log("username",this.username);
+       localStorage.setItem("USERNAME", this.username);
        this.alertService.presentToast("Logged In");
        this.dismissLogin();
        //this.navCtrl.navigateRoot('/commname');
