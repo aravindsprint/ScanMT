@@ -23,7 +23,7 @@
     </ion-row>
 
  
-    <ion-row>
+<!--     <ion-row>
     <ion-col><br>
     <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)"  #radioGroup>
       <section style="font-size:7px">
@@ -40,7 +40,7 @@
 
     </ion-radio-group>
   </ion-col>
-  </ion-row>
+  </ion-row> -->
  
 
 
@@ -99,27 +99,27 @@
     <ion-row>
       <ion-col size="6"><b>No of Countable Units</b></ion-col>
       <ion-col size="6" class="ion-float-right">
-         <ion-input style="text-align: left; border: grey solid 0.5px;" [(ngModel)]="noOfQty" (keyup)="onChange($event.target.value)" value="{{noOfQty }}"></ion-input>
+         <ion-input type="number" style="text-align: left; border: grey solid 0.5px;" [(ngModel)]="noOfQty" (keyup)="onChange($event.target.value)" value="{{noOfQty }}"></ion-input>
       </ion-col>
     </ion-row>
   
   <ion-row>
       <ion-col size="12">
      <ion-label><b>Select Countable UOM</b></ion-label>
-      <ion-select (ionChange)="onSelectChange($event.target.value)"> 
-          <ion-select-option *ngFor="let uom of CountableUOM" value="{{ uom }}" >
+      <ion-select (ionChange)="onSelectChange($event.target.value)" [(ngModel)]="favoriteUom"> 
+          <ion-select-option *ngFor="let uom of CountableUOM" value="{{ uom }}">
             {{ uom }}
           </ion-select-option>
      </ion-select>
   </ion-col>
 </ion-row>
 
-    <ion-row>
+   <!--  <ion-row>
       <ion-col size="6"><b>Vehicle No</b></ion-col>
       <ion-col size="6" class="ion-float-right">
          <ion-input style="text-align: left; border: grey solid 0.5px;" [(ngModel)]="vehicleNo" (keyup)="onChangeVehicle($event.target.value)" value="{{vehicleNo }}"></ion-input>
       </ion-col>      
-    </ion-row>
+    </ion-row> -->
   
     <ion-row>
       <ion-col size="6"><b>Remark</b></ion-col>
@@ -128,12 +128,12 @@
       </ion-col>
        </ion-row>
 
-      <ion-row>
+      <!-- <ion-row>
       <ion-col size="6"><b>Value of Goods</b></ion-col>
       <ion-col size="6" class="ion-float-right">
          <ion-input style="text-align: left; border: grey solid 0.5px;" [(ngModel)]="valueofgoods" (keyup)="onChangeValueOfGoods($event.target.value)" value="{{valueofgoods}}"></ion-input>
       </ion-col>
-       </ion-row>  
+       </ion-row>   -->
   </ion-grid>
 </ion-list>
 

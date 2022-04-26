@@ -33,7 +33,7 @@ export class StockEntryPage implements OnInit {
    remark;
    valueofgoods;
    uom;
-   
+   favoriteUom = 'Rolls';
    
    total_a;
    total_b;
@@ -153,6 +153,10 @@ export class StockEntryPage implements OnInit {
   CountableUOM = ['Rolls', 'Boxes', 'Bales', 'Bags',
   'Nos'];
 
+  //this.favoriteUom = "Rolls";
+
+
+
   onSelectChange(value) {  
   console.log(value);
   localStorage.setItem('COUNTABLEUOM',value);
@@ -190,11 +194,7 @@ export class StockEntryPage implements OnInit {
 
   draft(){
 
-   this.checkSeries = localStorage.getItem('SERIES');
-   if(this.checkSeries == null){
-    console.log("null");
-    this.showSelectSeries();
-   }else{
+   
    this.favoriteService.getAllFavoriteStock().then(result => {
      
    var current_timestamp = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -216,7 +216,7 @@ export class StockEntryPage implements OnInit {
                 'modified_by': '',
                 'idx': 0,
                 'docstatus': 0,
-                'naming_series': series,
+                'naming_series': 'BM/22/',
                 'stock_entry_type': 'Material Transfer',
                 'purpose': 'Material Transfer',
                 'add_to_transit': 0,
@@ -239,7 +239,7 @@ export class StockEntryPage implements OnInit {
                 'quantity': 0,
                 'no_of_countable_units': no_of_qty,
                 'countable_uom': uom,
-                'value_of_goods': valueofgoods,
+                'value_of_goods': 0,
                 'total_incoming_value': 0,
                 'total_outgoing_value': 0,
                 'value_difference': 0,
@@ -252,7 +252,7 @@ export class StockEntryPage implements OnInit {
                 'per_transferred': '',
                 'total_amount': 0,
                 'purpose_of_transport': '',
-                'vehicle_number': vehicleno,
+                'vehicle_number': 'None',
                 'remarks': remark,
                 'no_of_rolls': 0,
                 'lot_received_date': '',
@@ -296,7 +296,7 @@ export class StockEntryPage implements OnInit {
       
    })
 
-   }
+   
    
 
   }
@@ -315,11 +315,8 @@ export class StockEntryPage implements OnInit {
   
   submit(){
 
-  this.checkSeries = localStorage.getItem('SERIES');
-   if(this.checkSeries == null){
-    console.log("null");
-    this.showSelectSeries();
-   }else{
+  //this.checkSeries = localStorage.getItem('SERIES');
+  
    this.favoriteService.getAllFavoriteStocks().then(result => {
      
    var current_timestamp = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -341,7 +338,7 @@ export class StockEntryPage implements OnInit {
                 'modified_by': '',
                 'idx': 0,
                 'docstatus': 1,
-                'naming_series': series,
+                'naming_series': 'BM/22/',
                 'stock_entry_type': 'Material Transfer',
                 'purpose': 'Material Transfer',
                 'add_to_transit': 0,
@@ -364,7 +361,7 @@ export class StockEntryPage implements OnInit {
                 'quantity': 0,
                 'no_of_countable_units': no_of_qty,
                 'countable_uom': uom,
-                'value_of_goods': valueofgoods,
+                'value_of_goods': 0,
                 'total_incoming_value': 0,
                 'total_outgoing_value': 0,
                 'value_difference': 0,
@@ -377,7 +374,7 @@ export class StockEntryPage implements OnInit {
                 'per_transferred': '',
                 'total_amount': 0,
                 'purpose_of_transport': '',
-                'vehicle_number': vehicleno,
+                'vehicle_number': 'None',
                 'remarks': remark,
                 'no_of_rolls': 0,
                 'lot_received_date': '',
@@ -421,7 +418,7 @@ export class StockEntryPage implements OnInit {
       
    })
 
-   }   
+      
   }
 
   clearStockEntry() {
